@@ -1,0 +1,17 @@
+{% load staticfiles %}
+						<div class="side animate-box">
+							<div class="col-md-12 col-md-offset-0 text-center fh5co-heading fh5co-heading-sidebar">
+								<h2><span>Popular Posts</span></h2>
+							</div>
+							{% for pop_article in pop_articles %}
+								<div class="blog-entry">
+								<a href="#">
+									<img src='{{ pop_article.image.url }}' class="img-responsive" alt="">
+									<div class="desc">
+										<h3>{{ pop_article.title }}</h3>
+									</div>
+								</a>
+							</div>
+							{% endfor %}
+							<
+						</div>
