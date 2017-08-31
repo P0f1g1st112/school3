@@ -1,0 +1,169 @@
+{% load staticfiles %}
+{% include 'header.html' %}
+
+	<aside id="fh5co-hero">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="flexslider animate-box">
+						<ul class="slides">
+					   	<li class="history">
+					   		<div class="overlay-gradient"></div>
+					   		<div class="container-fluid">
+					   			<div class="row">
+						   			<div class="col-md-10 col-md-offset-1 slider-text">
+						   				<div class="slider-text-inner">
+						   					<h1>История</h1>
+												<h2>Как все начиналось и не только</h2>
+												<p class="ct"><a href="#">Подробнее <i class="icon-arrow-right"></i></a></p>
+						   				</div>
+						   			</div>
+						   		</div>
+					   		</div>
+					   	</li>
+					   	<li class="end-school">
+					   		<div class="overlay-gradient"></div>
+					   		<div class="container-fluid">
+					   			<div class="row">
+						   			<div class="col-md-10 col-md-offset-1 slider-text">
+						   				<div class="slider-text-inner">
+						   					<h1>Выпускной</h1>
+												<h2>18 июня прошел выпускной у 9-х классов</h2>
+												<p class="ct"><a href="#">Поробнее <i class="icon-arrow-right"></i></a></p>
+						   				</div>
+						   			</div>
+						   		</div>
+					   		</div>
+					   	</li>
+					   	<li class="first-september">
+					   		<div class="overlay-gradient"></div>
+					   		<div class="container-fluid">
+					   			<div class="row">
+						   			<div class="col-md-10 col-md-offset-1 slider-text">
+						   				<div class="slider-text-inner">
+						   					<h1>Скоро 1 сентября!</h1>
+												<h2>А ты уже готов к школе?<a href="#" target="_blank"></a></h2>
+												<p class="ct"><a href="#">Подробнее <i class="icon-arrow-right"></i></a></p>
+						   				</div>
+						   			</div>
+						   		</div>
+					   		</div>
+					   	</li>		   	
+					  	</ul>
+				  	</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+
+	<div id="fh5co-content">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-padded-right">
+					<div class="row">
+							<div class="col-md-12">
+							<div class="fh5co-blog animate-box">
+								<div class="title title-pin text-center">
+									<span class="posted-on">{{ article_newest.date_create }}</span>
+									<h3><a href="#">{{ article_newest.title }}</a></h3>
+									<span class="category">Новости</span>
+								</div>
+								<a href="#"><img class="img-responsive" src="{{ article_newest.image.url }}" alt=""></a>
+								<div class="blog-text text-center">
+									<p>{{ article_newest.content|truncatechars:150 }}</p>
+									<ul class="fh5co-social-icons">
+										<li>Share:</li>
+										<li><a href="#"><i class="icon-twitter-with-circle"></i></a></li>
+										<li><a href="#"><i class="icon-facebook-with-circle"></i></a></li>
+										<li><a href="#"><i class="icon-linkedin-with-circle"></i></a></li>
+										<li><a href="#"><i class="icon-dribbble-with-circle"></i></a></li>
+									</ul>
+								</div> 
+							</div>
+						</div>
+						{% for article in articles %}
+							<div class="col-md-6">
+							<div class="fh5co-blog animate-box">
+								<div class="title text-center">
+									<span class="posted-on">{{ article.date_create }}</span>
+									<h3><a href="#">{{ article.title }}</a></h3>
+									<span class="category">Новости</span>
+								</div>
+								<a href="#"><img class="img-responsive" src='{{ article.image.url }}' alt="" style="width:100%; height:225.7px;""></a>
+								<div class="blog-text text-center">
+									<p>{{ article.content|truncatechars:50 }}</p>
+									<ul class="fh5co-social-icons">
+										<li>Share:</li>
+										<li><a href="#"><i class="icon-twitter-with-circle"></i></a></li>
+										<li><a href="#"><i class="icon-facebook-with-circle"></i></a></li>
+										<li><a href="#"><i class="icon-linkedin-with-circle"></i></a></li>
+										<li><a href="#"><i class="icon-dribbble-with-circle"></i></a></li>
+									</ul>
+								</div> 
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				
+				<aside id="sidebar">
+					<div class="col-md-3">
+						<div class="side animate-box">
+							<div class="col-md-12 col-md-offset-0 text-center fh5co-heading fh5co-heading-sidebar">
+								<h2><span>About Me</span></h2>
+							</div>
+							<div class="fh5co-staff">
+								<img src='{% static "images/me.jpg" %}' alt="Free HTML5 Templates by FreeHTML5.co">
+								<h3>Александр Стоянов</h3>
+								<strong class="role">Президент</strong>
+								<p>Quos quia provident conse culpa facere ratione maxime commodi voluptates id repellat velit eaque aspernatur expedita.</p>
+								<ul class="fh5co-social-icons">
+									<li><a href="#"><i class="icon-facebook"></i></a></li>
+									<li><a href="#"><i class="icon-twitter"></i></a></li>
+									<li><a href="#"><i class="icon-dribbble"></i></a></li>
+									<li><a href="#"><i class="icon-github"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="side animate-box">
+							<div class="col-md-12 col-md-offset-0 text-center fh5co-heading fh5co-heading-sidebar">
+								<h2><span>Popular Posts</span></h2>
+							</div>
+							{% for pop_article in pop_articles %}
+								<div class="blog-entry">
+								<a href="#">
+									<img src='{{ pop_article.image.url }}' class="img-responsive" alt="">
+									<div class="desc">
+										<h3>{{ pop_article.title }}</h3>
+									</div>
+								</a>
+							</div>
+							{% endfor %}
+							<
+						</div>
+						<div class="side animate-box">
+							<div class="col-md-12 col-md-offset-0 text-center fh5co-heading fh5co-heading-sidebar">
+								<h2><span>Extra</span></h2>
+							</div>
+							<ul class="category">
+								<li><a href="#"><i class="icon-check"></i>Дополнительные занятия</a></li>
+								<li><a href="#"><i class="icon-check"></i>Расписание экзаменов</a></li>
+								<li><a href="#"><i class="icon-check"></i>Библиотека</a></li>
+								<li><a href="#"><i class="icon-check"></i>Список учеников</a></li>
+								<li><a href="#"><i class="icon-check"></i>Учителя</a></li>
+								<li><a href="#"><i class="icon-check"></i>Форма одежды</a></li>
+							</ul>
+						</div>
+						</div>
+					</div>
+				</aside>
+
+			</div>
+		</div>
+	</div>
+
+{% include 'footer.html' %}
+	</body>
+</html>
+
